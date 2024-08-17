@@ -1,0 +1,16 @@
+{
+  "ExpandedNodes": [
+    "",
+    "\\obj\\Debug",
+    "\\obj\\Release",
+    "\\Properties",
+    "\\Views",
+    "\\wwwroot",
+    "\\wwwroot\\js",
+    "\\wwwroot\\lib",
+    "\\wwwroot\\lib\\bootstrap",
+    "\\wwwroot\\lib\\jquery-validation"
+  ],
+  "SelectedNode": "\\ASP.NET.generated.sln",
+  "PreviewInSolutionExplorer": false
+}
