@@ -28,3 +28,4 @@ c:\Users\Bar\Desktop\my-app\ASP.NET\obj\Debug\net8.0\refint\ASP.NET.dll
 c:\Users\Bar\Desktop\my-app\ASP.NET\obj\Debug\net8.0\ASP.NET.pdb
 c:\Users\Bar\Desktop\my-app\ASP.NET\obj\Debug\net8.0\ASP.NET.genruntimeconfig.cache
 c:\Users\Bar\Desktop\my-app\ASP.NET\obj\Debug\net8.0\ref\ASP.NET.dll
+C:\Users\Bar\Desktop\my-app\ASP.NET\obj\Debug\net8.0\ASP.NET.csproj.AssemblyReference.cache
