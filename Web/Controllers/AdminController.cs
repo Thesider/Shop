@@ -2,7 +2,7 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace ASP.NET.Controllers;
 
-public class AdminController : UserController
+public class AdminController : Controller
 {
     public IActionResult Index()
     {

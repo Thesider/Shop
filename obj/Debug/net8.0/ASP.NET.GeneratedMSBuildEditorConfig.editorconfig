@@ -20,7 +20,7 @@ build_property.RootNamespace = ASP.NET
 build_property.ProjectDir = C:\Users\Bar\Desktop\my-app\ASP.NET\
 build_property.EnableComHosting = 
 build_property.EnableGeneratedComInterfaceComImportInterop = 
-build_property.RazorLangVersion = 8.0
+build_property.RazorLangVersion = 2.1
 build_property.SupportLocalizedComponentNames = 
 build_property.GenerateRazorMetadataSourceChecksumAttributes = 
 build_property.MSBuildProjectDirectory = C:\Users\Bar\Desktop\my-app\ASP.NET
@@ -38,6 +38,10 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = V2ViXFZpZXdzXFNoYXJlZFxFcnJvci5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
+[C:/Users/Bar/Desktop/my-app/ASP.NET/Web/Views/Shared/_Layout.cshtml]
+build_metadata.AdditionalFiles.TargetPath = V2ViXFZpZXdzXFNoYXJlZFxfTGF5b3V0LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
 [C:/Users/Bar/Desktop/my-app/ASP.NET/Web/Views/Shared/_ValidationScriptsPartial.cshtml]
 build_metadata.AdditionalFiles.TargetPath = V2ViXFZpZXdzXFNoYXJlZFxfVmFsaWRhdGlvblNjcmlwdHNQYXJ0aWFsLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
@@ -49,7 +53,3 @@ build_metadata.AdditionalFiles.CssScope =
 [C:/Users/Bar/Desktop/my-app/ASP.NET/Web/Views/_ViewStart.cshtml]
 build_metadata.AdditionalFiles.TargetPath = V2ViXFZpZXdzXF9WaWV3U3RhcnQuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
-
-[C:/Users/Bar/Desktop/my-app/ASP.NET/Web/Views/Shared/_Layout.cshtml]
-build_metadata.AdditionalFiles.TargetPath = V2ViXFZpZXdzXFNoYXJlZFxfTGF5b3V0LmNzaHRtbA==
-build_metadata.AdditionalFiles.CssScope = b-itwtz7crxw

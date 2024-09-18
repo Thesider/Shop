@@ -1,83 +1,90 @@
 using ASP.NET.Services.Interfaces;
 using Microsoft.AspNetCore.Mvc;
-using ASP.NET.Models;
+using ASP.NET.Dtos;
 
 
-namespace ASP.NET.Controllers;
-
-public class ProductController : Controller
+namespace ASP.NET.Controllers
 {
-    private readonly IProductService _productService;
-
-    public ProductController(IProductService productService)
+    public class ProductController : Controller
     {
-        _productService = productService;
-    }
+        private readonly IProductService _productService;
 
-    public async Task<IActionResult> Index()
-    {
-        var products = await _productService.GetAllProductsAsync();
-        return View(products);
-    }
-
-    public IActionResult Create()
-    {
-        return View();
-    }
-
-    [HttpPost]
-    public async Task<IActionResult> Create(ProductViewModel model)
-    {
-        if (ModelState.IsValid)
+        public ProductController(IProductService productService)
         {
-            await _productService.CreateProductAsync(model);
-            return RedirectToAction("Index");
+            _productService = productService;
         }
 
-        return View(model);
-    }
-
-    public async Task<IActionResult> Edit(int id)
-    {
-        var product = await _productService.GetProductByIdAsync(id);
-        if (product == null)
+        public async Task<IActionResult> Index()
         {
-            return NotFound();
+            var products = await _productService.GetProductDtos();
+            return View(products);
         }
 
-        return View(product);
-    }
-
-    [HttpPost]
-    public async Task<IActionResult> Edit(int id, ProductViewModel model)
-    {
-        if (ModelState.IsValid)
+        public async Task<IActionResult> Details(int id)
         {
-            await _productService.UpdateProductAsync(id, model);
-            return RedirectToAction("Index");
+            var product = await _productService.GetProductDto(id);
+            if (product == null)
+            {
+                return NotFound();
+            }
+            return View(product);
         }
 
-        return View(model);
-    }
-
-    public async Task<IActionResult> Delete(int id)
-    {
-        await _productService.DeleteProductAsync(id);
-        return RedirectToAction("Index");
-    }
-    public async Task<IActionResult> Details(int id)
-    {
-        var product = await _productService.GetProductByIdAsync(id);
-        if (product == null)
+        public IActionResult Create()
         {
-            return NotFound();
+            return View();
         }
-        return View(product);
-    }
 
-    public async Task<IActionResult> Search(string searchTerm)
-    {
-        var products = await _productService.SearchProductsAsync(searchTerm);
-        return View("Index", products);
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> Create(ProductDto model)
+        {
+            if (ModelState.IsValid)
+            {
+                await _productService.AddProductDto(model);
+                return RedirectToAction(nameof(Index));
+            }
+            return View(model);
+        }
+
+        public async Task<IActionResult> Edit(int id)
+        {
+            var product = await _productService.GetProductDto(id);
+            if (product == null)
+            {
+                return NotFound();
+            }
+            return View(product);
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> Edit(ProductDto model)
+        {
+            if (ModelState.IsValid)
+            {
+                await _productService.UpdateProductDto(model);
+                return RedirectToAction(nameof(Index));
+            }
+            return View(model);
+        }
+
+        public async Task<IActionResult> Delete(int id)
+        {
+            var product = await _productService.GetProductDto(id);
+            if (product == null)
+            {
+                return NotFound();
+            }
+            return View(product);
+        }
+
+        [HttpPost, ActionName("Delete")]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> DeleteConfirmed(int id)
+        {
+            await _productService.DeleteProductDto(id);
+            return RedirectToAction(nameof(Index));
+        }
     }
 }
