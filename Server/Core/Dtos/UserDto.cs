@@ -1,3 +1,4 @@
+
 namespace ASP.NET.Dtos
 {
     public class UserDto
@@ -7,5 +8,7 @@ namespace ASP.NET.Dtos
         public string Password { get; set; }
         public string Email { get; set; }
         public string Role { get; set; }
+
+        public List<OrderDto> Orders { get; set; } = new List<OrderDto>();
     }
 }

@@ -1,8 +1,10 @@
 using ASP.NET.Dtos;
+using System.Collections.Generic;
+using System.Threading.Tasks;
 
-namespace Asp.Net.Core.Dtos
+namespace ASP.NET.Services.Interfaces
 {
-    public interface ICartServices
+    public interface ICartService
     {
         Task<IEnumerable<CartDto>> GetCarts();
         Task<CartDto> GetCart(int id);

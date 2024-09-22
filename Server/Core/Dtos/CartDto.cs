@@ -1,5 +1,5 @@
-using Asp.Net.Core.Dtos;
-
+using ASP.NET.Dtos;
+    
 namespace ASP.NET.Dtos
 {
     public class CartDto
@@ -7,6 +7,8 @@ namespace ASP.NET.Dtos
         public int Id { get; set; }
 
         public int UserId { get; set; }
+
+        public int ProductId { get; set; }
         
         public int Quantity { get; set; }
 

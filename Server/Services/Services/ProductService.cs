@@ -1,81 +1,85 @@
+using ASP.NET.Dtos;
+using ASP.NET.Data.Interfaces;
+using ASP.NET.Models;
 using System.Collections.Generic;
 using System.Threading.Tasks;
-using Microsoft.EntityFrameworkCore;
-using ASP.NET.Models;
 using ASP.NET.Services.Interfaces;
-using ASP.NET.Data;
-using ASP.NET.Dtos;
 
 namespace ASP.NET.Services
 {
     public class ProductService : IProductService
     {
-        private readonly ApplicationDbContext _context;
+        private readonly IProductRepository _productRepository;
 
-        public ProductService(ApplicationDbContext context)
+        public ProductService(IProductRepository productRepository)
         {
-            _context = context;
+            _productRepository = productRepository;
         }
 
         public async Task<IEnumerable<ProductDto>> GetProductDtos()
         {
-            return await _context.Products
-                .Select(p => MapToDto(p))
-                .ToListAsync();
+            var products = await _productRepository.GetProducts();
+            return products.Select(p => MapToDto(p)).ToList();
         }
 
         public async Task<ProductDto> GetProductDto(int id)
         {
-            var product = await _context.Products.FindAsync(id);
+            var product = await _productRepository.GetProduct(id);
             return product != null ? MapToDto(product) : null;
         }
 
         public async Task<ProductDto> AddProductDto(ProductDto productDto)
         {
             var product = MapToEntity(productDto);
-            _context.Products.Add(product);
-            await _context.SaveChangesAsync();
-            return MapToDto(product);
+            var addedProduct = await _productRepository.AddProduct(product);
+            return MapToDto(addedProduct);
         }
 
         public async Task<ProductDto> UpdateProductDto(ProductDto productDto)
         {
-            var product = await _context.Products.FindAsync(productDto.Id);
-            if (product == null) return null;
-
-            MapToEntity(productDto, product);
-            await _context.SaveChangesAsync();
-            return MapToDto(product);
+            var product = MapToEntity(productDto);
+            var updatedProduct = await _productRepository.UpdateProduct(product);
+            return MapToDto(updatedProduct);
         }
 
         public async Task<ProductDto> DeleteProductDto(int id)
         {
-            var product = await _context.Products.FindAsync(id);
-            if (product == null) return null;
-
-            _context.Products.Remove(product);
-            await _context.SaveChangesAsync();
-            return MapToDto(product);
+            var product = await _productRepository.DeleteProduct(id);
+            return product != null ? MapToDto(product) : null;
         }
 
-        private static ProductDto MapToDto(Product product)
+     private static ProductDto MapToDto(Product product)
+{
+    return new ProductDto
+    {
+        Id = product.Id,
+        Name = product.Name,
+        Description = product.Description,
+        Price = product.Price,
+        ImageUrl = product.ImageUrl,
+        CategoryId = product.CategoryId,
+        Category = new CategoryDto
         {
-            return new ProductDto
+            Id = product.Category.CategoryId,
+            CategoryName = product.Category.CategoryName,
+            Description = product.Category.Description
+        }
+    };
+}
+        private static Product MapToEntity(ProductDto productDto)
+        {
+            return new Product
             {
-                Id = product.Id,
-                Name = product.Name,
-                Description = product.Description,
-                Price = product.Price
+                Id = productDto.Id,
+                Name = productDto.Name,
+                Description = productDto.Description,
+                Price = productDto.Price,
+                ImageUrl = productDto.ImageUrl,
+                CategoryId = productDto.CategoryId,
+            
             };
-        }
-
-        private static Product MapToEntity(ProductDto dto, Product product = null)
-        {
-            product ??= new Product();
-            product.Name = dto.Name;
-            product.Description = dto.Description;
-            product.Price = dto.Price;
-            return product;
         }
     }
 }
+
+        

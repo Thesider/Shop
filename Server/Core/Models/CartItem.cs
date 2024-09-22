@@ -1,7 +1,11 @@
+using System;
+using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
-namespace Core.Models
+namespace ASP.NET.Models
 {
-    [Table("Cart")]
+    [Table("CartItems")]
     public class CartItem
     {
         [Key]
@@ -13,5 +17,7 @@ namespace Core.Models
         public int Quantity { get; set; }
         [Required]
         public int UserId { get; set; }
+  
+        
     }
 }

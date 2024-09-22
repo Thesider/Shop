@@ -1,5 +1,11 @@
+using System;
+using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
+
 namespace ASP.NET.Models
 {
+
     public class OrderItem
     {
         public int Id { get; set; }

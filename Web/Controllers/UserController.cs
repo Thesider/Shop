@@ -1,15 +1,21 @@
 
+using ASP.NET.Models;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
+using ASP.NET.Web.ViewModels;
+
 
 namespace ASP.NET.Controllers;
 
 public class UserController : Controller
 {
     private readonly UserManager<User> _userManager;
+    private readonly SignInManager<User> _signInManager; 
 
     public UserController(UserManager<User> userManager)
     {
         _userManager = userManager;
+        
     }
     [HttpGet]
     public IActionResult Register()
@@ -21,7 +27,7 @@ public class UserController : Controller
     {
         if (ModelState.IsValid)
         {
-            var user = new User { UserName = model.Email, Email = model.Email };
+            var user = new User { Username = model.Email, Email = model.Email, Password = model.Password };
             var result = await _userManager.CreateAsync(user, model.Password);
 
             if (result.Succeeded)

@@ -1,4 +1,4 @@
-using ASP.NET.Models; // Add the using directive for the 'Category' class
+using ASP.NET.Models; 
 
 namespace ASP.NET.Dtos
 {
@@ -10,6 +10,7 @@ namespace ASP.NET.Dtos
         public decimal Price { get; set; }
         public string ImageUrl { get; set; }
         public int CategoryId { get; set; }
-        public Category Category { get; set; }
+        public CategoryDto Category { get; set; }
+        
     }
 }
