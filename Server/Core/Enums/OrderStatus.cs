@@ -1,4 +1,4 @@
-namespace Core.Enums
+namespace ASP.NET.Enums
 {
     public enum OrderStatus
     {

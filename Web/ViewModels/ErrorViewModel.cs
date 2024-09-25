@@ -1,3 +1,4 @@
+
 namespace ASP.NET.Models;
 
 public class ErrorViewModel

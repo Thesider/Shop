@@ -1,7 +1,3 @@
-using System;
-using System.Collections.Generic;
-using ASP.NET.Dtos;
-
 namespace ASP.NET.Dtos
 {
     public class OrderDto

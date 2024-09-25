@@ -1,6 +1,7 @@
 {
   "version": "0.2.0",
   "configurations": [
+    
     {
       "name": ".NET Core Launch (web)",
       "type": "coreclr",
@@ -20,7 +21,7 @@
       "sourceFileMap": {
         "/Views": "${workspaceFolder}/Views"
       },
-      "dotnetRunMessages": true
+
     }
   ]
 }

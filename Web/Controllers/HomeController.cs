@@ -6,7 +6,7 @@ namespace ASP.NET.Controllers;
 
 public class HomeController : Controller
 {
-    private readonly ILogger<HomeController> _logger;
+    public readonly ILogger<HomeController> _logger;
 
     public HomeController(ILogger<HomeController> logger)
     {
@@ -15,6 +15,7 @@ public class HomeController : Controller
 
     public IActionResult Index()
     {
+        _logger.LogInformation("Home page visited");
         return View();
     }
 
